@@ -1,8 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Find My Workspace";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles {
+    <link rel="stylesheet" href="~/css/main.css" />
+}
+
+<div class="main-content">
+    <div class="text-content">
+        <h1>Find the <i>workspace</i> that works for you</h1>
+        <a asp-controller="Home" asp-action="Locations" class="cta-button">Find Locations</a>
+    </div>
+    <div class="image-content">
+        <img src="~/img/workspace-illustration.png" alt="Workspace Illustration">
+    </div>
 </div>
