@@ -1,0 +1,39 @@
+﻿@model AboutUsModel
+
+@{
+    ViewData["Title"] = "About Us";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/main.css" />
+}
+
+<main>
+    <section id="team">
+        <h1>About Our Team</h1>
+        <div class="team-members">
+            @foreach (var member in Model.TeamMembers)
+            {
+                <article class="team-member">
+                    <img src="@member.ImageUrl" alt="@member.Name">
+                    <div class="team-info">
+                        <h3>@member.Name</h3>
+                        <p>@member.Role</p>
+                        <p>Contributions: @member.Contributions</p>
+                        <a href="@member.GitHubUrl" target="_blank">GitHub Page</a>
+                    </div>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section id="data-model">
+        <h1>Data Model</h1>
+        <img src="@Model.DataModelImageUrl" alt="Data Model">
+    </section>
+
+    <section id="github-repo">
+        <h1>Github Repository</h1>
+        <a href="@Model.GitHubRepoUrl" class="cta-button" target="_blank">Visit our GitHub Repository</a>
+    </section>
+</main>
