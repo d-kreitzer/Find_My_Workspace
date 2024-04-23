@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="~/css/main.css" />
 }
 
-
-<h1>Locations</h1>\
+<div class="header-container">
+    <h1>Locations</h1>
+    <p class="cta-button">
+        <a asp-action="Create">Create New</a>
+    </p>
+</div>
 <br />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -57,3 +58,4 @@
 }
     </tbody>
 </table>
+<br />
