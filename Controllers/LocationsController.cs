@@ -22,7 +22,15 @@ namespace DIS6225_FinalProject_MVC.Controllers
         // GET: Locations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Location.ToListAsync());
+            //Get data from the database to populate the city proportion chart
+            var cityProportion = _context.Location.GroupBy(l => l.City)
+                .Select(l => new { City = l.Key, Count = l.Count() }).ToList();
+            ViewBag.CityProportion = cityProportion;
+
+            //Get all locations and pass them directly to view
+            var locations = await _context.Location.ToListAsync();
+
+            return View(locations);
         }
 
         // GET: Locations/Details/5

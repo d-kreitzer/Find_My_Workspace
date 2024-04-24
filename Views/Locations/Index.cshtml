@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="~/css/main.css" />
 }
 
+
+
 <div class="header-container">
     <h1>Locations</h1>
     <p class="cta-button">
         <a asp-action="Create">Create New</a>
     </p>
+</div>
+<br />
+
+<div class="charts-container">
+    <div class="chart-container">
+        <h2>City Proportion </h2>
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
 <br />
 
@@ -58,4 +68,34 @@
 }
     </tbody>
 </table>
-<br />
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chartData = @Html.Raw(Json.Serialize(ViewBag.CityProportion));
+        var labels = chartData.map(function (item) { return item.city; });
+        var counts = chartData.map(function (item) { return item.count; });
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Locations',
+                    data: counts,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+}

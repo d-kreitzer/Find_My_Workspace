@@ -278,3 +278,25 @@ h1 {
 .reviews-chart {
     padding: 50px;
 }
+
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.chart-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    margin: 10px;
+    height: 500px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .chart-container {
+        flex-basis: 100%;
+    }
+}
